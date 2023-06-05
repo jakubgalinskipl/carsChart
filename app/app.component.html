@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-6">
+    <div style="display: block;" class="chart">
+      <canvas baseChart width="40" height="40"
+             
+              [datasets]="labelMFL"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary" (click)="reduce()">reduce</button>
