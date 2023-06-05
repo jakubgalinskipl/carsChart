@@ -36,7 +36,13 @@ export class AppComponent implements OnInit {
   public labelMFL: Array<any> = [
       { data: this.lineChartData,
         label: 'car1',
-      }
+      },
+      { data: this.lineChartData,
+        label: 'car2',
+      },
+      { data: this.lineChartData,
+        label: 'car2',
+      },
   ];
 
   public lineChartColors: Array<any> = [
