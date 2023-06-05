@@ -15,7 +15,16 @@ export class AppComponent implements OnInit {
   public a = 0;
 
   public kilometry = [1, 15, 200, 19, 18, 0, 10, 11, 12];
-  public labels = ['1', '2', '3', '4', '4', '5', '6', '7'];
+  public labels = [
+    '2023-06-01',
+    '2023-06-05',
+    '2023-06-10',
+    '2023-06-15',
+    '2023-06-20',
+    '2023-06-25',
+    '2023-06-28',
+    '2023-06-30',
+  ];
 
   public lineChartData: Array<any> = this.kilometry;
   public lineChartLabels: Array<any> = this.labels;
