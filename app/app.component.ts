@@ -5,59 +5,52 @@ import { BaseChartDirective } from 'ng2-charts';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
- @ViewChild(BaseChartDirective) chart: BaseChartDirective;
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
   // lineChart
   public label = 8;
   public a = 0;
 
-  public lineChartData: Array<any> = [
-    1, 15, 20, 19, 18, 0, 10, 11, 12
-  ];
+  public kilometry = [1, 15, 200, 19, 18, 0, 10, 11, 12];
+  public labels = ['1', '2', '3', '4', '4', '5', '6', '7'];
 
-  public lineChartLabels: Array<any> = ['1', '2', '3', '4', '4', '5', '6', '7'];
+  public lineChartData: Array<any> = this.kilometry;
+  public lineChartLabels: Array<any> = this.labels;
+
   public lineChartOptions: any = {
     responsive: true,
-    scales : {
-    yAxes: [{
-       ticks: {
-        //  steps : 25,
-        //  stepValue : 15,
-        //  max : 40,
-          min : 0,
-        }
-    }] 
-  }
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            //  steps : 25,
+            //  stepValue : 15,
+            //  max : 40,
+            min: 0,
+          },
+        },
+      ],
+    },
   };
 
-  public labelMFL: Array<any> = [
-      { data: this.lineChartData,
-        label: 'car1',
-      },
-      { data: this.lineChartData,
-        label: 'car2',
-      },
-      { data: this.lineChartData,
-        label: 'car2',
-      },
-  ];
+  public labelMFL: Array<any> = [{ data: this.lineChartData, label: 'car1' }];
 
   public lineChartColors: Array<any> = [
-    { // grey
+    {
+      // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    }
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+    },
   ];
   // public lineChartLegend: boolean = true;
   public lineChartType = 'line';
-
 
   // events
   public chartClicked(e: any): void {
@@ -68,24 +61,22 @@ export class AppComponent implements OnInit {
     console.log(e);
   }
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     setInterval(() => {
       const _lineChartData = this.lineChartData;
       const _lineChartLabels = this.lineChartLabels;
-      _lineChartData.push(Math.floor((Math.random() * 20) + 1));
+      _lineChartData.push(Math.floor(Math.random() * 20 + 1));
       _lineChartLabels.push(this.label);
       this.label++;
 
-      this.lineChartData.splice(0,1);
-      this.lineChartLabels.splice(0,1);
-      
+      this.lineChartData.splice(0, 1);
+      this.lineChartLabels.splice(0, 1);
 
       this.lineChartData = _lineChartData;
       this.lineChartLabels = _lineChartLabels;
       this.chart.chart.update();
     }, 10000);
   }
-  
 }
